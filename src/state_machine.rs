@@ -570,7 +570,7 @@ impl StateMachine {
     /// Query for a result, or yield: Err(NothingAvailable), Err(Disconnected).
     pub fn try_step(&mut self, outbox: &mut dyn EventBox) -> Result<(), mpmc::TryRecvError> {
         use itertools::Itertools;
-        use rand::Rng;
+        //use rand::Rng;
         use std::iter;
 
         if !self.is_running {
@@ -609,12 +609,12 @@ impl StateMachine {
             .collect_vec();
 
         // Interleave timer events with routing or network events.
-        let mut positions = iter::repeat(true)
+        let positions = iter::repeat(true)
             .take(timed_out_events.len())
             .chain(iter::repeat(false).take(events.len()))
             .collect_vec();
 
-        self.state.rng().shuffle(&mut positions);
+        // ====>>> FIX self.state.rng().shuffle(&mut positions);
 
         let mut interleaved = positions
             .iter()

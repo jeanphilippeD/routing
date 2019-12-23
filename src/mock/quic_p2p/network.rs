@@ -244,7 +244,8 @@ impl Inner {
             .map(|(connection, _)| connection)
             .collect();
 
-        let connection = if let Some(connection) = self.rng.choose(&connections) {
+        let connection = if let Some(connection) = connections.get(0) {
+            // self.rng.choose(&connections) {
             **connection
         } else {
             return None;

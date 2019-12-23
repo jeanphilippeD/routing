@@ -99,14 +99,14 @@
 
 mod authority;
 mod error;
-mod network_tests;
+//mod network_tests;
 mod prefix;
 mod xorable;
 
 pub use self::authority::Authority;
 pub use self::error::RoutingTableError;
-#[cfg(any(test, feature = "mock_base"))]
-pub use self::network_tests::verify_network_invariant;
+//#[cfg(any(test, feature = "mock_base"))]
+//pub use self::network_tests::verify_network_invariant;
 pub use self::prefix::{Prefix, VersionedPrefix};
 pub use self::xorable::Xorable;
 use itertools::Itertools;
