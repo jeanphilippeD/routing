@@ -42,7 +42,7 @@ impl<R: CryptoRng> rand_crypto::CryptoRng for RngCompat<R> {}
 // compatibility adapter between the two.
 pub(crate) struct RngParsecCompat<R>(pub R);
 
-impl<R: rand_new::Rng> rand_parsec::Rng for RngParsecCompat<R> {
+impl<R: rand::Rng> rand_parsec::Rng for RngParsecCompat<R> {
     fn next_u32(&mut self) -> u32 {
         self.0.next_u32()
     }
